@@ -1,5 +1,5 @@
 const rankTest = require('ava');
-const {voyageRisk} = require('../src/rank')
+const {voyageRisk,voyageProfitFactor} = require('../src/rank')
 
 rankTest('foo', t => {
   t.pass();
@@ -56,4 +56,19 @@ rankTest('voyageRisk case 4 test. should return 9 when voyageRisk given voyage l
   const result = voyageRisk(voyage);
   //then
   t.is(result, 9)
+});
+
+rankTest('voyageProfitFactor case 1 test. should return 2 when voyageProfitFactor given voyage zone 123 and history.length = 1 and voyage.length = 1', t => {
+  //when
+  const voyage = {
+      zone: '123',
+      length: 1
+  };
+  const history = {
+      length: 1
+  };
+  //given
+  const result = voyageProfitFactor(voyage, history);
+  //when
+  t.is(result, 2);
 });
