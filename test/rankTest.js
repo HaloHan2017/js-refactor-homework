@@ -1,4 +1,5 @@
 const rankTest = require('ava');
+const {voyageRisk} = require('../src/rank')
 
 rankTest('foo', t => {
   t.pass();
@@ -7,4 +8,16 @@ rankTest('foo', t => {
 rankTest('bar', async t => {
   const bar = Promise.resolve('bar');
   t.is(await bar, 'bar');
+});
+
+rankTest('voyageRisk case 1 test. should return 3 when voyageRisk given voyage length = 5 and voyage zone  = 1234', t => {
+    //when
+    const voyage = {
+        length: 5,
+        zone: '1234'
+    };
+    //given
+    const result = voyageRisk(voyage);
+    //then
+    t.is(result, 3)
 });
