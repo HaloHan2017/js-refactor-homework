@@ -33,3 +33,17 @@ rankTest('voyageRisk case 2 test. should return 5 when voyageRisk given voyage l
   //then
   t.is(result, 5)
 });
+
+rankTest('voyageRisk case 3 test. should return 7 when voyageRisk given voyage length = 7 and voyage zone  = east-indies', t => {
+  //when
+  const voyage = {
+      length: 7,
+      zone: 'east-indies'
+  };
+
+  //given
+  const result = voyageRisk(voyage);
+
+  //then
+  t.is(result, 7)
+});
