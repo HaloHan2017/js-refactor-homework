@@ -87,3 +87,20 @@ rankTest('voyageProfitFactor case 2 test. should return 3 when voyageProfitFacto
   //when
   t.is(result, 3);
 });
+
+rankTest('voyageProfitFactor case 3 test. should return 1 when voyageProfitFactor given voyage zone 123 and history.length = 3 and voyage.length = 16', t => {
+  //when
+  const voyage = {
+      zone: '123',
+      length: 16
+  };
+  const history = {
+      length: 3
+  };
+
+  //given
+  const result = voyageProfitFactor(voyage, history);
+
+  //when
+  t.is(result, 1);
+});
