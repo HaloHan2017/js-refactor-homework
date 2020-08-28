@@ -1,20 +1,18 @@
 function printOwing (invoice) {
   printTitle();
-
-  // record due date
-  const today = new Date();
-  invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
-
-  // print details
-  let detail = {
-    customer : invoice.customer,
-    outstanding : calculateOutstanding(invoice),
-    dueDateString : invoice.dueDate.toLocaleDateString()
-  }
-  printDetail(detail);
+  printDetail({
+      customer : invoice.customer,
+      outstanding : calculateOutstanding(invoice),
+      dueDateString : getDueDateString(invoice.dueDate)
+  });
 }
 
-function calculateOutstanding(){
+function getDueDateString(dueDate){
+  const today = new Date();
+  return new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30).toLocaleDateString();
+}
+
+function calculateOutstanding(invoice){
   let outstanding = 0;
   for (const o of invoice.borderSpacing) {
     outstanding += o.amount;
