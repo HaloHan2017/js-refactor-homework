@@ -12,13 +12,22 @@ function printOwing (invoice) {
   invoice.dueDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 30);
 
   // print details
-  console.log(`name: ${invoice.customer}`);
-  console.log(`amount: ${outstanding}`);
-  console.log(`amount: ${invoice.dueDate.toLocaleDateString()}`);
+  let detail = {
+    customer : invoice.customer,
+    outstanding : outstanding,
+    dueDateString : invoice.dueDate.toLocaleDateString()
+  }
+  printDetail(detail);
 }
 
 function printTitle(){
   console.log('***********************');
   console.log('**** Customer Owes ****');
   console.log('***********************');
+}
+
+function printDetail(detail){
+  console.log(`name: ${detail.customer}`);
+  console.log(`amount: ${detail.outstanding}`);
+  console.log(`amount: ${detail.dueDateString}`);
 }
